@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">LoginDemo</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="login">Login</string>
+    <string name="fade_in">Fade In Tiles</string>
+    <string name="transparency">Transparency</string>
+    <integer name="tiles_mapnik_max_zoom">19</integer>
+    <integer name="tiles_lyrk_max_zoom">18</integer>
+    <string name="map_tiles_default_server_high_res">"http://api.tiles.mapbox.com/v4/opentripplannerhigh.jcah6hla/{z}/{x}/{y}@2x.png256?access_token=pk.eyJ1Ijoib3BlbnRyaXBwbGFubmVyaGlnaCIsImEiOiIyT2xxdVRjIn0.1n9CkukOWpsIgExzdcWfJg"</string>
+    <string name="map_tiles_default_server_low_res">"http://api.tiles.mapbox.com/v4/opentripplannerlow.jcagk4b3/{z}/{x}/{y}.png256?access_token=pk.eyJ1Ijoib3BlbnRyaXBwbGFubmVybG93IiwiYSI6ImRja1VOUjAifQ.1XBo8j8DGWj2EdIsxXGHdQ"</string>
+    <string name="tiles_mapnik">"http://a.tile.openstreetmap.org/{z}/{x}/{y}.png"</string>
+    <string name="tiles_lyrk">http://tiles.lyrk.org/lr/{z}/{x}/{y}?apikey=ea4f307439474ce99e29662232f80885</string>
+    <integer name="tiles_maquest_max_zoom">18</integer>
+
+    <string name="mapbox_access_token">pk.eyJ1IjoiZ2VldGh1dGgiLCJhIjoiY2p6ODdlaDAwMDA5eDNjcW82b3Zlc25zcSJ9.xSnQ0Lhx4dYjfm-gVuxNIg</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="api">Api call time</string>
+</resources>
