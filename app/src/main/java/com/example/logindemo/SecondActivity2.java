@@ -35,29 +35,31 @@ public class SecondActivity2 extends FragmentActivity implements OnMapReadyCallb
         setContentView(R.layout.tile_overlay_demo);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync((OnMapReadyCallback) this);
+        mapFragment.getMapAsync(this);
 
-        lat = new Double[]{8.529535,
-                8.522359,
-                8.518448,
-                8.513492,
-                8.512261,
-                8.509205,
-                8.502966,
-                8.494774,
-                8.488111,
-                8.487049
+        lat = new Double[]{
+                9.5907299,
+                41.9029468,
+                -37.8199669,
+                51.529831,
+                22.5584134,
+                9.7923541,
+                45.4262289,
+                31.2088705,
+                22.6958007,
+                24.9999986
         };
-        lng = new Double[]{76.93843,
-                76.940983,
-                76.942267,
-                76.946672,
-                76.948344,
-                76.94916,
-                76.950747,
-                76.948001,
-                76.948001,
-                76.952633
+        lng = new Double[]{
+                76.5291946,
+                12.4522948,
+                144.9812606,
+                -0.1743451,
+                75.7538562,
+                -74.8039497,
+                10.9224912,
+                29.9070125,
+                75.8641383,
+                -71.0175096
         };
     }
 
