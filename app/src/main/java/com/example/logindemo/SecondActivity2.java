@@ -266,7 +266,7 @@ public class SecondActivity2 extends FragmentActivity implements OnMapReadyCallb
                 // mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat[i], lng[i])));
                 long endTime = System.nanoTime();
                 long totalTime = (endTime - startTime) / 1000000;
-                System.out.println("API call time: " + (df.format(totalTime)));
+                System.out.println("API call time: " + (totalTime));
                 //Log.d(getString(R.string.api), String.valueOf(totalTime + "--" + startTime + "--" + endTime));
 
             }
