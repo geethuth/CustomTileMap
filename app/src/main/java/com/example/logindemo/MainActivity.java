@@ -12,6 +12,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 
@@ -247,35 +248,37 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMaxZoomLevel = 10;
-//        mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+        mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
         new CountDownTimer(100 * 13000, 13000) {
 
             @RequiresApi(api = Build.VERSION_CODES.N)
             public void onTick(long millisUntilFinished) {
-                long startTime = System.nanoTime();
-//                CustomUrlTileProvider mTileProvider = new CustomUrlTileProvider(
-//                        tile_width,
-//                        tile_height,
-//                        MOON_MAP_URL_FORMAT);
-//                mMap.addTileOverlay(new TileOverlayOptions()
-//                        .tileProvider(mTileProvider)
-//                        .zIndex(-1));
+                mMap.clear();
+                long startTime = System.currentTimeMillis();
+                CustomUrlTileProvider mTileProvider = new CustomUrlTileProvider(
+                        tile_width,
+                        tile_height,
+                        MOON_MAP_URL_FORMAT);
+                mMap.addTileOverlay(new TileOverlayOptions()
+                        .tileProvider(mTileProvider)
+                        .zIndex(-1));
 
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-                        9.5907299,
-                        76.5291946),
-//                                lat[latLongCount],
-//                                lng[latLongCount]),
+//                        9.5907299,
+//                        76.5291946),
+                                lat[latLongCount],
+                                lng[latLongCount]),
                         14));
-                mMap.addMarker(new MarkerOptions().position(new LatLng(
-                        9.5907299,
-                        76.5291946)));
+                Marker m = mMap.addMarker(new MarkerOptions().position(new LatLng(
+//                        9.5907299,
+//                        76.5291946)));
+                                lat[latLongCount],
+                                lng[latLongCount])));
                 latLongCount++;
 
-                long endTime = System.nanoTime();
-                long totalTime = (endTime - startTime) / 1000000;
-                System.out.println("API call time: " + (df.format(totalTime)));
-                mMap.clear();
+                long endTime = System.currentTimeMillis();
+                long totalTime = (endTime - startTime);
+                System.out.println("API call time: " + totalTime);
             }
 
             @Override
