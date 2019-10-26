@@ -12,7 +12,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 
@@ -249,36 +248,47 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMaxZoomLevel = 10;
         mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
-        new CountDownTimer(100 * 13000, 13000) {
+        new CountDownTimer(10 * 3000, 3000) {
 
             @RequiresApi(api = Build.VERSION_CODES.N)
             public void onTick(long millisUntilFinished) {
                 mMap.clear();
-                long startTime = System.currentTimeMillis();
                 CustomUrlTileProvider mTileProvider = new CustomUrlTileProvider(
                         tile_width,
                         tile_height,
                         MOON_MAP_URL_FORMAT);
+                final long startTime = System.currentTimeMillis();
                 mMap.addTileOverlay(new TileOverlayOptions()
                         .tileProvider(mTileProvider)
                         .zIndex(-1));
+                mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                    @Override
+                    public void onMapLoaded() {
+                        long currentTime = System.currentTimeMillis();
+                        long totalLoadmapTime = (currentTime - startTime);
 
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+                        System.out.println("Map load time: " + totalLoadmapTime);
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 //                        9.5907299,
 //                        76.5291946),
-                                lat[latLongCount],
-                                lng[latLongCount]),
-                        14));
-                Marker m = mMap.addMarker(new MarkerOptions().position(new LatLng(
+                                        lat[latLongCount],
+                                        lng[latLongCount]),
+                                14));
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(
 //                        9.5907299,
 //                        76.5291946)));
                                 lat[latLongCount],
                                 lng[latLongCount])));
-                latLongCount++;
+                        latLongCount++;
 
-                long endTime = System.currentTimeMillis();
-                long totalTime = (endTime - startTime);
-                System.out.println("API call time: " + totalTime);
+                        long endTime = System.currentTimeMillis();
+                        long totalTime = (endTime - startTime);
+                        // System.out.println("API call time: " + endTime + " - " + startTime);
+                        System.out.println("Total time(map loading and marker loading): " + totalTime);
+                    }
+                });
+                // getLocations();
+
             }
 
             @Override
